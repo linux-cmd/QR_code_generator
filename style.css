@@ -1,4 +1,4 @@
-/* === Reset & Variables === */
+/* --- Reset & Variables --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,18 +16,18 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* === Body & Banner === */
+/* --- Body & Banner --- */
 body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
   color: var(--text);
-  overflow: hidden; /* will re-enable after intro */
+  overflow: hidden;
 }
 body.scroll-enabled {
   overflow: auto;
 }
 
-/* === Intro Overlay === */
+/* --- Intro Overlay --- */
 #intro-overlay {
   position: fixed; inset: 0;
   background: var(--bg-start);
@@ -101,7 +101,7 @@ body.scroll-enabled {
   background: #4f46e5;
 }
 
-/* === Banner === */
+/* --- Banner --- */
 .banner {
   display: flex; justify-content: flex-end; align-items: center;
   padding: 0.5rem 1rem;
@@ -118,13 +118,13 @@ body.scroll-enabled {
   filter: invert(50%);
 }
 
-/* === App Layout === */
+/* --- App Layout --- */
 .app {
   min-height: calc(100vh - 48px);
   display: grid; place-items: center; padding: 1rem;
 }
 
-/* === Card === */
+/* --- Card --- */
 .card {
   background: var(--card-bg);
   backdrop-filter: blur(20px);
@@ -145,7 +145,7 @@ body.scroll-enabled {
   font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--muted);
 }
 
-/* === Controls === */
+/* --- Controls --- */
 .controls {
   display: grid; grid-template-columns: 1fr auto;
   gap: 0.5rem; margin-bottom: 2rem;
@@ -171,7 +171,7 @@ body.scroll-enabled {
   box-shadow: 0 5px 15px rgba(99,102,241,0.4);
 }
 
-/* === QR Box === */
+/* --- QR Box --- */
 .qr-box {
   width: 320px; height: 320px; margin: 0 auto;
   background: #fff; border-radius: var(--radius);
@@ -185,7 +185,7 @@ body.scroll-enabled {
   .qr-box { width: 90%; height: auto; }
 }
 
-/* === Sound Control === */
+/* --- Sound Control --- */
 .sound-control {
   position: fixed; bottom: 1rem; right: 1rem;
   display: inline-block; z-index: 10;
