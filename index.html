@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR Code Generator</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Intro Overlay -->
+  <div id="intro-overlay">
+    <div class="intro-content">
+      <!-- Updated Logo SVG -->
+      <svg id="intro-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#6366f1">
+        <rect width="12" height="12" x="4" y="4" rx="2" ry="2"/>
+        <rect width="12" height="12" x="20" y="20" rx="2" ry="2"/>
+        <rect width="12" height="12" x="40" y="40" rx="2" ry="2"/>
+      </svg>
+      <!-- Headline & Subtitle -->
+      <h1 id="intro-text">QR Code Generator</h1>
+      <p id="intro-subtitle">Create and share scannable codes in seconds</p>
+      <!-- Centered Intro QR -->
+      <div id="intro-qr"></div>
+      <!-- Start Button -->
+      <button id="start-btn">Start</button>
+    </div>
+  </div>
+
+  <!-- Banner -->
+  <header class="banner">
+    <span>© 2025 Abhijay Panwar. All rights reserved.</span>
+    <a href="https://github.com/linux-cmd" target="_blank" aria-label="GitHub">
+      <img src="img/github_icon.svg" alt="GitHub" />
+    </a>
+  </header>
+
+  <!-- Main App -->
+  <main class="app">
+    <div class="card">
+      <h1 class="title">QR Code Generator</h1>
+      <p class="subtitle">Enter a link or text below</p>
+      <div class="controls">
+        <input id="input-text" type="text" placeholder="https://example.com" />
+        <button id="generate-btn">Generate</button>
+      </div>
+      <div id="qr-code" class="qr-box"></div>
+    </div>
+  </main>
+
+  <!-- Background Music -->
+  <audio autoplay loop muted id="bg-music">
+    <source src="bg_music/ambient-music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Sound Controls -->
+  <div class="sound-control">
+    <button id="mute-btn">🔈</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" />
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

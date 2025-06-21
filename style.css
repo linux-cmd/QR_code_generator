@@ -1,0 +1,212 @@
+/* === Reset & Variables === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --bg-start: #1f1c2c;
+  --bg-end: #928dab;
+  --card-bg: rgba(255,255,255,0.1);
+  --accent: #6366f1;
+  --text: #f3f3f3;
+  --muted: rgba(243,243,243,0.7);
+  --radius: 16px;
+  --transition: 0.3s ease;
+  --shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* === Body & Banner === */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  color: var(--text);
+  overflow: hidden; /* will re-enable after intro */
+}
+body.scroll-enabled {
+  overflow: auto;
+}
+
+/* === Intro Overlay === */
+#intro-overlay {
+  position: fixed; inset: 0;
+  background: var(--bg-start);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  z-index: 1000;
+  opacity: 1; transition: opacity 0.8s ease;
+}
+#intro-overlay.fade-out {
+  opacity: 0; pointer-events: none;
+}
+.intro-content {
+  text-align: center;
+}
+
+/* Logo Animation */
+#intro-logo {
+  width: 120px;
+  opacity: 0; transform: scale(0.5);
+  animation: logoPop 1s forwards 0.5s;
+}
+@keyframes logoPop {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Headline & Subtitle */
+#intro-text {
+  margin-top: 1rem;
+  font-size: 2.2rem; font-weight: bold;
+  color: var(--accent);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  opacity: 0;
+  animation: textFadeIn 1s forwards 1.5s;
+}
+#intro-subtitle {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 300px; line-height: 1.4;
+  opacity: 0;
+  animation: textFadeIn 1s forwards 1.8s;
+}
+@keyframes textFadeIn {
+  to { opacity: 1; }
+}
+
+/* Centered QR Swing */
+#intro-qr {
+  margin: 2rem auto 0;
+  width: 150px; height: 150px;
+  opacity: 0; transform: rotateY(90deg);
+  animation: qrSwing 1s forwards 2.5s;
+}
+@keyframes qrSwing {
+  to { opacity: 1; transform: rotateY(0deg); }
+}
+
+/* Start Button */
+#start-btn {
+  margin-top: 3rem;
+  padding: 0.75rem 2rem;
+  font-size: 1.2rem;
+  border: none; border-radius: var(--radius);
+  background: var(--accent); color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(99,102,241,0.5);
+  transition: background-color var(--transition);
+}
+#start-btn:hover,
+#start-btn:focus {
+  background: #4f46e5;
+}
+
+/* === Banner === */
+.banner {
+  display: flex; justify-content: flex-end; align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(0,0,0,0.2); font-size: 0.9rem;
+  z-index: 10;
+}
+.banner span { margin-right: 0.5rem; }
+.banner img {
+  width: 20px; height: 20px;
+  filter: invert(1);
+  transition: filter var(--transition);
+}
+.banner a:hover img {
+  filter: invert(50%);
+}
+
+/* === App Layout === */
+.app {
+  min-height: calc(100vh - 48px);
+  display: grid; place-items: center; padding: 1rem;
+}
+
+/* === Card === */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem; max-width: 400px; width: 100%;
+  text-align: center;
+  animation: fadeIn 1s forwards 5s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.title {
+  font-size: 2rem; margin-bottom: 0.25rem; color: var(--accent);
+}
+.subtitle {
+  font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--muted);
+}
+
+/* === Controls === */
+.controls {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 0.5rem; margin-bottom: 2rem;
+}
+.controls input {
+  padding: 0.75rem 1rem; border: none;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.2);
+  color: var(--text); outline: none;
+}
+.controls input:focus {
+  background: rgba(255,255,255,0.3);
+}
+.controls button {
+  background: var(--accent); border: none;
+  border-radius: var(--radius);
+  color: white; padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.controls button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(99,102,241,0.4);
+}
+
+/* === QR Box === */
+.qr-box {
+  width: 320px; height: 320px; margin: 0 auto;
+  background: #fff; border-radius: var(--radius);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  display: flex; align-items: center; justify-content: center;
+}
+.qr-box canvas {
+  width: 250px !important; height: 250px !important;
+}
+@media (max-width: 360px) {
+  .qr-box { width: 90%; height: auto; }
+}
+
+/* === Sound Control === */
+.sound-control {
+  position: fixed; bottom: 1rem; right: 1rem;
+  display: inline-block; z-index: 10;
+}
+#mute-btn {
+  background: rgba(255,255,255,0.1);
+  color: #fff; border: none;
+  border-radius: 50%; padding: 0.5rem;
+  cursor: pointer; transition: background var(--transition);
+}
+#mute-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+#volume-slider {
+  position: absolute; bottom: 120%; left: 50%;
+  transform: translateX(-50%); width: 100px;
+  opacity: 0; background: rgba(255,255,255,0.2);
+  border-radius: 8px; pointer-events: none;
+  transition: opacity var(--transition);
+}
+.sound-control:hover #volume-slider,
+.sound-control:focus-within #volume-slider {
+  opacity: 1; pointer-events: auto;
+}
